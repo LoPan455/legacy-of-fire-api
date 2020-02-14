@@ -24,7 +24,7 @@ public class SessionController {
   @Autowired
   SessionService sessionService;
 
-  private Session dummySession = new Session(Instant.now(), "It was totally sweet");
+  private Session dummySession = new Session("some-id", Instant.now(), "It was totally sweet");
 
   @GetMapping("/")
   @ResponseStatus(HttpStatus.OK)
@@ -47,7 +47,7 @@ public class SessionController {
 
   @PutMapping("/{id}")
   public Session updateSession(
-      @PathVariable String sessionId,
+      @PathVariable String id,
       @RequestBody Session session) {
     this.dummySession = session;
     return this.dummySession;
